@@ -1,9 +1,9 @@
 # TIL 20240130
-
+---
 24년 01월 30일 TIL(Today I Learned)
 
 ## 1. Python pydantic
-
+---
 
 ### Python pydantic이란?
 
@@ -205,3 +205,4 @@ except ValidationError as e:
 ---
 - [pydantic을 사용하여, 안정성 높이기](https://re-code-cord.tistory.com/entry/pydantic%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EB%B0%B1%EC%95%A4%EB%93%9C-%EA%B0%9C%EB%B0%9C%EC%9E%90-%EA%B4%B4%EB%A1%AD%ED%9E%88%EA%B8%B0)
 - [Python pydantic이란? Python에서 데이터 검증과 설정을 관리해보자(Feat. FastAPI)](https://lsjsj92.tistory.com/650)
+- https://docs.pydantic.dev/latest/concepts/pydantic_settings/
