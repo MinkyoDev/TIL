@@ -1,9 +1,9 @@
 # TIL 20240130
----
+
 24년 01월 30일 TIL(Today I Learned)
 
 ## 1. Python pydantic
----
+
 
 ### Python pydantic이란?
 
