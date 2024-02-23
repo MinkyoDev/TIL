@@ -242,7 +242,7 @@ scoville[0] < K
 
 
 ## 참고자료
----
+
 - [파이썬의 heapq 모듈로 힙 자료구조 사용하기](https://www.daleseo.com/python-heapq/)
 - [파이썬 - 정렬 필수 heapq](https://velog.io/@matt2550/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%A0%95%EB%A0%AC-%ED%95%84%EC%88%98-heapq)
 - [힙 정렬(heap sort)이란? 힙 정렬 공부하기 - 파이썬 자료구조 공부](https://lsjsj92.tistory.com/472)
