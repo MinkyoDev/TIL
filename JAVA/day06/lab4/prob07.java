@@ -18,7 +18,7 @@ class Child extends Parent {
 	public String name;
 
 	public Child() {
-		this("홍길동");
+		this("홍길동");  // 자신의 class의 다른 생성자 호출, 중간에 들어갈 수 없고 맨 위에 들어가야함.
 		System.out.println("Child() call");
 	}
 
@@ -28,7 +28,7 @@ class Child extends Parent {
 	}
 }
 
-public class prob07 {
+public class Prob07 {
 	public static void main(String[] args) {
 		Child child = new Child();
 	}
