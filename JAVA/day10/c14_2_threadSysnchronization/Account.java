@@ -1,7 +1,11 @@
 package com.shinhan.day10.c14_2_threadSysnchronization;
 
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
+@ToString
+@NoArgsConstructor
 @AllArgsConstructor
 public class Account {
 
@@ -10,11 +14,11 @@ public class Account {
 
 	int balance;
 
-	void deposit(int amount) {
+	public void deposit(int amount) {
 		balance += amount;
 	}
 
-	int withdraw(int amount) {
+	public int withdraw(int amount) {
 		if (balance >= amount) {
 			balance -= amount;
 			return amount;
