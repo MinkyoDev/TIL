@@ -21,6 +21,7 @@ public class Problem09 {
 				name = key;
 			maxScore = map.get(key);
 		}
-		System.out.println("name: " + name + ", maxScore: " + maxScore + ", totalScore: " + totalScore);
+		System.out.println("name: " + name + ", maxScore: " + maxScore + ", totalScore: " + totalScore + ", avg: "
+				+ totalScore / map.size());
 	}
 }
