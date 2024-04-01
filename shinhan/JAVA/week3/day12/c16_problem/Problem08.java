@@ -1,5 +1,7 @@
 package com.shinhan.day12.c16_problem;
 
+import java.util.Arrays;
+
 @FunctionalInterface
 interface Function<T> {
 	public double apply(T t);
@@ -29,36 +31,25 @@ class Student {
 	}
 }
 
-public class Problem09 {
+public class Problem08 {
 
 	private static Student[] students = { new Student("홍길동", 90, 96), new Student("신용권", 95, 93) };
 
 	// avg() 메소드 작성
 	private static double avg(Function<Student> function) {
-		double total = 0;
-		for (Student student : students) {
-			total += function.apply(student);
-		}
-		return total / students.length;
+//		double total = 0;
+//		for (Student student : students) {
+//			total += function.apply(student);
+//		}
+//		return total / students.length;
+		return Arrays.stream(students).mapToDouble(s->function.apply(s)).average().getAsDouble();
 	}
 
 	public static void main(String[] args) {
-		double englishAvg = avg(new Function<Student>() {
-
-			@Override
-			public double apply(Student s) {
-				return s.getEnglishScore();
-			}
-		});
+		double englishAvg = avg(s -> s.getEnglishScore());
 		System.out.println("영어 평균 점수: " + englishAvg);
 
-		double mathAvg = avg(new Function<Student>() {
-
-			@Override
-			public double apply(Student t) {
-				return t.getMathScore();
-			}
-		});
+		double mathAvg = avg(s -> s.getMathScore());
 		System.out.println("수학 평균 점수: " + mathAvg);
 	}
 }

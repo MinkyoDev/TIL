@@ -1,5 +1,6 @@
 package com.shinhan.day12.c16_problem;
 
+@FunctionalInterface
 interface Function {
 	double apply(double x, double y);
 }

@@ -1,4 +1,4 @@
-package com.shinhan.day08.c11_1_exception;
+package com.shinhan.week2.day08.c11_1_exception;
 
 public class ScoreException extends Exception {
 

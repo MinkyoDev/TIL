@@ -29,6 +29,8 @@ public class Problem07 {
 
 		List<Member> developers = list.stream()
 				.filter(m->m.getJob()=="개발자").collect(Collectors.toList());
+		List<Member> developers2 = list.stream()
+				.filter(m->m.getJob()=="개발자").toList();
 
 		developers.stream().forEach(m -> System.out.println(m.getName()));
 	}
