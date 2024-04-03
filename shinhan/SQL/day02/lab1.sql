@@ -41,18 +41,17 @@ where months_between(sysdate, hire_date)/12 >= 7;
 
 -- =============Group 함수==================
 -- 7. 각 부서별 인원수를 조회하되 인원수가 5명 이상인 부서만 출력되도록 하시오.
-select department_id, count(department_id)
+select department_id, count(*)
 from employees
 group by department_id
-having count(department_id) >= 5;
+having count(*) >= 5;
 
 
 -- 8. 각 부서별 최대급여와 최소급여를 조회하시오. 단, 최대급여와 최소급여가 같은 부서는 직원이 한명일 가능성이 높기때문에 조회결과에서 제외시킨다.
 select department_id, max(salary), min(salary)
 from employees
-where department_id is not null
 group by department_id
-having count(department_id) != 1;
+having max(salary) != min(salary);
 
    
 -- 9. 부서가 50, 80, 110 번인 직원들 중에서 급여를 5000 이상 24000 이하를 받는 직원들을 대상으로 부서별 평균 급여를 조회하시오.
@@ -63,5 +62,5 @@ where department_id in (50, 80, 110)
 and salary between 5000 and 24000
 group by department_id
 having avg(salary) >= 8000
-order by 평균급여 desc;
+order by 2 desc;
 
