@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+// VO(Value Object)
 // DTO(Data Transfer Object)
 // JavaBeans기술에서 이용(JSP, Spring, Mybatis)
 @Getter@Setter@ToString
