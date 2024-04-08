@@ -2,6 +2,7 @@ package com.shinhan.day15;
 
 import java.sql.Date;
 import java.util.List;
+import java.util.Map;
 
 // Controller -> Service -> DAO
 // Service : 비지니스 로직을 수행한다.
@@ -48,4 +49,14 @@ public class EmpService {
 	public int empDelete(int empid) {
 		return empDAO.empDelete(empid);
 	}
+
+	// 9. 직원 번호를 이용해서 직원의 이름과 직책과 급여를 조회한다.
+	public Map<String, Object> empInfo(int empid) {
+		return empDAO.empInfo(empid);
+	}
+	
+	// 10. 직원번호가 들어오면 직원 보너스를 return하는 함수를 호출한다.
+		public double callFunction(int empid) {
+			return empDAO.callFunction(empid);
+		}
 }

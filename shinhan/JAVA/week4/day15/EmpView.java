@@ -1,6 +1,7 @@
 package com.shinhan.day15;
 
 import java.util.List;
+import java.util.Map;
 
 // View : 사용자에게 어떻게 보여줄지를 담당, JSP로 작성할 예정
 public class EmpView {
@@ -31,6 +32,12 @@ public class EmpView {
 	public static void print(String message) {
 		System.out.printf("=========%s=========\n", message);
 		System.out.println();
+	}
+
+	public static void print(Map<String, Object> emp) {
+		for (String key : emp.keySet()) {
+			System.out.println(key + " ==> " + emp.get(key));
+		}
 	}
 
 }

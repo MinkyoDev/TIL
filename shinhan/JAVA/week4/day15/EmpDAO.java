@@ -1,13 +1,17 @@
 package com.shinhan.day15;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Types;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.shinhan.day15.util.DBUtil;
 
@@ -243,5 +247,55 @@ public class EmpDAO {
 			DBUtil.dbDisconnect(conn, pst, rs);
 		}
 		return result;
+	}
+	
+	// 9. 직원 번호를 이용해서 직원의 이름과 직책과 급여를 조회한다.
+	public Map<String, Object> empInfo(int empid) {
+		Map<String, Object> empMap = new HashMap<>();
+		
+		String fname = null;
+		String job = null;
+		int salary = 0;
+		
+		String sql = "{call sp_empInfo(?, ?, ?, ?)}";
+		CallableStatement cstmt = null;
+		conn = DBUtil.dbConnection();
+		try {
+			cstmt = conn.prepareCall(sql);
+			cstmt.setInt(1, empid);
+			cstmt.registerOutParameter(2, Types.VARCHAR);
+			cstmt.registerOutParameter(3, Types.VARCHAR);
+			cstmt.registerOutParameter(4, Types.INTEGER);
+			boolean result = cstmt.execute();
+			fname = cstmt.getNString(2);
+			job = cstmt.getNString(3);
+			salary = cstmt.getInt(4);
+			empMap.put("fname", fname);
+			empMap.put("job", job);
+			empMap.put("salary", salary);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbDisconnect(conn, cstmt, rs);
+		}
+		return empMap;
+	}
+	
+	// 10. 직원번호가 들어오면 직원 보너스를 return하는 함수를 호출한다.
+	public double callFunction(int empid) {
+		double bonus = 0;
+		String sql = "select f_bonus(?) from dual";
+		conn = DBUtil.dbConnection();
+		try {
+			pst = conn.prepareStatement(sql);
+			pst.setInt(1, empid);
+			rs = pst.executeQuery();
+			if (rs.next()) {
+				bonus = rs.getDouble(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return bonus;
 	}
 }

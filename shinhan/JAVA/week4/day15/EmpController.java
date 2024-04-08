@@ -2,6 +2,7 @@ package com.shinhan.day15;
 
 import java.sql.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 import com.shinhan.day15.util.DateUtil;
@@ -65,6 +66,19 @@ public class EmpController {
 				int result = empService.empDelete(empid);
 				EmpView.print(result > 0 ? "입력성공" : "입력실패");
 			}
+			case 9 -> {
+				System.out.print("조회할 직원번호> ");
+				int empid = sc.nextInt();
+				// 모들 칼럼이면 DTO, (이름, job, salary)만 가져오기
+				Map<String, Object> emp = empService.empInfo(empid);
+				EmpView.print(emp);
+			}
+			case 10 -> {
+				System.out.print("조회할 직원번호> ");
+				int empid = sc.nextInt();
+				double result = empService.callFunction(empid);
+				EmpView.print("보너스: " + result);
+			}
 			default -> {
 			}
 			}
@@ -75,50 +89,50 @@ public class EmpController {
 	private static EmpDTO insertMenu2() {
 		String tmp = "";
 		sc.nextLine();
-		
+
 		System.out.print("EMPLOYEE_ID>>");
 		tmp = sc.nextLine();
-		int empid = tmp==""?0:Integer.parseInt(tmp);
-		
+		int empid = tmp == "" ? 0 : Integer.parseInt(tmp);
+
 		System.out.print("FIRST_NAME>>");
 		tmp = sc.nextLine();
-		String fname = tmp==""?null:tmp;
-		
+		String fname = tmp == "" ? null : tmp;
+
 		System.out.print("LAST_NAME>>");
 		tmp = sc.nextLine();
-		String lname = tmp==""?null:tmp;
-		
+		String lname = tmp == "" ? null : tmp;
+
 		System.out.print("EMAIL>>");
 		tmp = sc.nextLine();
-		String email = tmp==""?null:tmp;
-		
+		String email = tmp == "" ? null : tmp;
+
 		System.out.print("PHONE_NUMBER>>");
 		tmp = sc.nextLine();
-		String phone = tmp==""?null:tmp;
-		
+		String phone = tmp == "" ? null : tmp;
+
 		System.out.print("HIRE_DATE>>");
 		tmp = sc.nextLine();
-		Date hdate = tmp==""?null:DateUtil.getSQLDate(tmp);
-		
+		Date hdate = tmp == "" ? null : DateUtil.getSQLDate(tmp);
+
 		System.out.print("JOB_ID>>");
 		tmp = sc.nextLine();
-		String job_id = tmp==""?null:tmp;
-		
+		String job_id = tmp == "" ? null : tmp;
+
 		System.out.print("SALARY>>");
 		tmp = sc.nextLine();
-		int sal = tmp==""?0:Integer.parseInt(tmp);
-		
+		int sal = tmp == "" ? 0 : Integer.parseInt(tmp);
+
 		System.out.print("COMMISSION_PCT>>");
 		tmp = sc.nextLine();
-		double comm = tmp==""?0:Double.parseDouble(tmp);
-		
+		double comm = tmp == "" ? 0 : Double.parseDouble(tmp);
+
 		System.out.print("MANAGER_ID>>");
 		tmp = sc.nextLine();
-		int mid = tmp==""?0:Integer.parseInt(tmp);
-		
+		int mid = tmp == "" ? 0 : Integer.parseInt(tmp);
+
 		System.out.print("DEPARTMENT_ID>>");
 		tmp = sc.nextLine();
-		int deptid = tmp==""?0:Integer.parseInt(tmp);
+		int deptid = tmp == "" ? 0 : Integer.parseInt(tmp);
 
 		EmpDTO emp = new EmpDTO();
 		emp.setCommission_pct(comm);
@@ -135,7 +149,7 @@ public class EmpController {
 
 		return emp;
 	}
-	
+
 	private static EmpDTO insertMenu() {
 		System.out.print("EMPLOYEE_ID>>");
 		int empid = sc.nextInt();
@@ -159,7 +173,7 @@ public class EmpController {
 		int mid = sc.nextInt();
 		System.out.print("DEPARTMENT_ID>>");
 		int deptid = sc.nextInt();
-		
+
 		EmpDTO emp = new EmpDTO();
 		emp.setCommission_pct(comm);
 		emp.setDepartment_id(deptid);
@@ -172,7 +186,7 @@ public class EmpController {
 		emp.setManager_id(mid);
 		emp.setPhone_number(phone);
 		emp.setSalary(sal);
-		
+
 		return emp;
 	}
 
@@ -180,6 +194,8 @@ public class EmpController {
 		System.out.println("=======================================================");
 		System.out.println("1.모든직원조회  2.특정직원조회  3.특정부서직원조회  4.특정Job직원조회");
 		System.out.println("5.조건조회(부서/직책/입사일/급여)  6.입력  7.수정  8.삭제");
+		System.out.println("9.Procedure호출(직원정보IN/정보OUT)");
+		System.out.println("10.Procedure호출(f_bonus)");
 		System.out.println("0.종료");
 		System.out.println("=======================================================");
 		System.out.print("선택> ");
