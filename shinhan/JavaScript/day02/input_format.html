@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<!-- 
+size : input의 크기 
+maxlength : 최대 입력값 길이
+name : 서버에서 사용, 클라이언트도 사용
+id : 클라이언트에서만 사용, 유일한 값이여야 함. 여러개일 때 가장 먼저 만나는 객체를 얻음.
+-->
+<body>
+	<h1>입력양식 연습</h1>
+	<form action="inputConfirm.jsp" method="get" enctype="application/x-www-form-urlencoded">
+		1.<input name="input1" id="input1" autofocus><br>
+		2.text<input name="input2" type="text" size="10" maxlength="5" value="12345"><br>
+		3.password<input name="input3" type="password" value="12345" readonly><br>
+		4.search<input name="input4" type="search" placeholder="x표시 있음" required><br>
+		5.url<input name="input5" type="url" placeholder="url형태"><br>
+		6.email<input name="input6" type="email" placeholder="xxxx@xxx.xxx"><br>
+		7.tel<input name="input7" type="tel" pattern="[01]{3}-[0-9]{3,4}-[0-9]{4}"><br>
+		
+		<fieldset>
+			<legend>성별 선택(radio는 서로 배타적)</legend>
+			<input name="gender" type="radio" value="M" checked>남자
+			<input name="gender" type="radio" value="F">여자<br>
+		</fieldset>
+		
+		<fieldset>
+			<legend>전공 선택(radio는 서로 배타적)</legend>
+			<input name="major" type="radio" value="A">컴공
+			<input name="major" type="radio" value="B">경제
+			<input name="major" type="radio" value="C" checked>독어독문
+		</fieldset>
+		
+		<fieldset>
+			<legend>학습과목(checkbox는 서로 독립적)</legend>
+			<input type="checkbox" name="subject" value="HTML">HTML5
+			<input type="checkbox" name="subject" value="CSS">CSS3
+			<input type="checkbox" name="subject" value="JS">JavaScript
+			<input type="checkbox" name="subject" value="JQ">JQuery
+			<input type="checkbox" name="subject" value="react">ReactJS
+		</fieldset>
+		
+		8.number<input name="input8" type="number" value="50" min="10" max="100" step="10"/><br>
+		9.range<input name="input9" type="range" value="80" max="100" step="10"/><br>
+	
+		10.date<input name="input10" type="date"/><br>
+		11.month<input name="input11" type="month"/><br>
+		12.week<input name="input12" type="week"/><br>
+		
+		12.time<input name="input12" type="time"/><br>
+		12.datetime<input name="input12" type="datetime"/><br>
+		12.datetime-local<input name="input12" type="datetime-local"/><br>
+		
+		13.이미지(상대)<input type="image" src="../Doit_src/05/images/login.png"><br>
+		13.이미지(절대)<input type="image" src="/webproject/Doit_src/05/images/login.png"><br>
+		<img src="../Doit_src/05/images/login.png"><br>
+	
+		14.버튼<input type="button" value="button" onclick="alert('form안에서 버튼 누름')"><br>
+		<button>form안에 버튼(submit이 수행됨)</button><br>
+		
+		15.file<input type="file"><br>
+		16.hidden<input type="hidden"><br>
+
+		17.textarea<textarea rows="10" cols="100" name="memo"></textarea><br>
+		
+		18.select<select name="week1">
+			<option value="MON">월요일</option>
+			<option value="TUE">화요일</option>
+			<option>수요일</option>
+			<option>목요일</option>
+			<option selected>금요일</option>
+		</select><br>
+		
+		18.select<select name="week2" multiple>
+			<option value="MON">월요일</option>
+			<option value="TUE">화요일</option>
+			<option>수요일</option>
+			<option>목요일</option>
+			<option selected>금요일</option>
+		</select><br>
+		
+		<input type="text" list="weekList" name="week3">
+		<datalist id="weekList">
+			<option>월요일</option>
+			<option>화요일</option>
+			<option>수요일</option>
+			<option>목요일</option>
+			<option selected>금요일</option>
+		</datalist><br>
+		
+		<!-- 
+		submit, image : 서버전송 
+		button : 클릭시 javascript 실행하기 위함
+		-->
+		<input type="submit" value="서버전송">
+	</form>
+	
+	<button onclick="call()">ID값 얻기</button>
+	
+	<script>
+		function call(){
+			a = document.getElementById("input1").value;
+			console.log(a);			
+		}
+	</script>
+</body>
+</html>

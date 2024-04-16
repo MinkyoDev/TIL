@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- 외부 스타일시트 연결 -->
+<link rel="stylesheet" href="external.css">
+<style>
+h3 {
+	color:blue;
+}
+p {
+	font-size: 30px;
+	color:orange;
+	background-color: green;
+}
+* {
+	margin: 0;
+}
+#container {
+	width: 500px;
+	height: 500px;
+	border: 1px solid gray;
+	margin: 0 auto;
+}
+/* 서로 다른 타입의 여러 태그에 같은 디자인을 할 때 class 이용 */
+.my1 {
+	color: maroon;
+	font-size: 50px;
+}
+/* 그룹선택자 */
+h1, h3 {
+	text-align: center;
+}
+</style>
+</head>
+<body>
+	<div id="container">
+		<h1 class="my1">CSS문법 익히기</h1>
+		<h2 style="color:red;">CSS문법 익히기(inline stylesheet)</h2>
+		<h3 class="my1">CSS문법 익히기</h3>
+		<p class="my1">CSS문법 익히기</p>
+	</div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gasoek+One&display=swap" rel="stylesheet">
+<style>
+/* 
+1. !important
+2. inline우선
+3. internal이거나 external
+ */
+*{
+  font-family: "Black Han Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+h1{
+	color: rgba(255,0,0,0.5) !important;
+	display: inline;
+}
+#my1{
+	border: 3px dotted hotpink;
+}
+h2{
+	border: 3px dotted green;
+}
+h2{
+	border: 3px dotted blue;
+}
+div{
+	color: #00fff0;
+}
+</style>
+</head>
+<body>
+	<h1 style="color: blue">CSS 적용순서</h1>
+	<h2 class="my1">CSS 적용순서</h2>
+	<div>
+		<h3>h3...</h3>
+		<h4>h4...</h4>
+		<p>p1</p>
+		<p>p2</p>
+		<p>p3</p>
+	</div>
+</body>
+</html>

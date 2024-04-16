@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>새로운 채팅방 만들기</h1>
+	<form action="settingConfirm.jsp" method="get">
+		USERID <input type="text" name="id" pattern="^[a-zA-Z0-9]+$" placeholder="영문또는 숫자" required><br>
+		<fieldset>
+			<legend>SETTING</legend>
+			<fieldset>
+				<legend>MODELS</legend>
+				<input name="model" type="radio" checked value="3.5turbo">gpt-3.5-turbo-1106
+				<input name="model" type="radio" value="4">gpt-4
+				<input name="model" type="radio" value="4turbo">gpt-4-1106-preview
+			</fieldset>
+			<fieldset>
+				<legend>STREAM</legend>
+				<input name="stream" type="radio" value="off" checked>off
+				<input name="stream" type="radio" value="on">on
+			</fieldset>
+			<fieldset>
+				<legend>CACHE</legend>
+				<input name="cache" type="radio" value="off">off
+				<input name="cache" type="radio" value="on" checked>on
+			</fieldset>
+			<fieldset>
+				<legend>MEMORY</legend>
+				<input name="memory" type="radio" value="off">off
+				<input name="memory" type="radio" value="on" checked>on
+			</fieldset>
+		</fieldset>
+		
+		<input type="submit" value="채팅방 만들기">
+	</form>
+</body>
+</html>

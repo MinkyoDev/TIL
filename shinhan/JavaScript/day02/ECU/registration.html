@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>회원가입</h1>
+	<form action="registrationConfirm.jsp" method="post">
+		ID <input type="text" name="id" pattern="^[a-zA-Z0-9]+$" placeholder="영문과 숫자만 가능합니다." required><br>
+		PASSWORD <input type="password" name="pw" pattern="^[a-zA-Z0-9]{4,}$" placeholder="영문과 숫자만 가능합니다. 최소 4자리" required><br>
+		<input type="submit" value="가입하기">
+	</form>
+</body>
+</html>
