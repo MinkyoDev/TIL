@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var v1 = 300;  // global
+        v2 = 400;  // global
+
+        // 1. 선언적 함수(이름이 있음)
+        function call1() {
+            document.getElementById("here").innerHTML = "변수선언";
+            var a = 100;  // 지역변수
+            b = 200;  // var 없으면 global
+        };
+
+        function call2() {
+            document.getElementById("here").innerHTML = v1 + v2 + b;
+        };
+
+        function call3() {
+            var a = 100, b = 10;
+            var result = a < 100 && ++b > 10;
+            var result2 = a >= 100 || ++b > 10;
+            document.getElementById("here").innerHTML = result2 + "==>" + b;
+        };
+
+        function call4() {
+            // 사용자에게 정수를 입력 받아서 학점 출력
+            // 90~100: A
+            // 80~90: B
+            // var score = prompt("점수를 입력하세요");
+            var score = Number(document.getElementById("score").value);
+            var grade;
+            // if (score > 90 && score <= 100) {
+            //     grade = "A";
+            // } else if (score > 80 && score <= 90) {
+            //     grade = "B";
+            // } else if (score > 70 && score <= 80) {
+            //     grade = "C";
+            // } else {
+            //     grade = "F";
+            // }
+            // here.innerHTML = grade;
+
+            switch (Math.floor(score / 10)) {
+                case 10:
+                case 9: grade = "A"; break;
+                case 8: grade = "B"; break;
+                case 7: grade = "C"; break;
+                case 6: grade = "D"; break;
+                default: grade = "F"; break;
+            }
+            here.innerHTML = grade;
+        };
+
+        function call5() {
+            {
+                let a = 100;
+                var b = 200;
+                console.log(a + b);
+            }
+            console.log(a + b);
+
+            var su = document.querySelector("#score").value;
+            var total = 0;
+            // block내에서만 유효하려면 scope : let
+            for (let i = 1; i <= su; i++) {
+                total += i;
+            }
+            document.getElementById("here").innerHTML = "1~" + su + "까지의 합계=" + total;
+            console.log(i);  // let이라서 불가
+        };
+
+        function call6() {
+            var output = "";
+            for (let gop = 1; gop <= 9; gop++) {
+                for (let dan = 2; dan <= 9; dan++) {
+                    // if (dan==4) break;
+                    if (dan == 4) continue;
+                    // output += dan + "*" + gop + "=" + dan * gop + "\t";
+                    output += `${dan} * ${gop} = ${dan * gop}\t`;
+                };
+                output += "<br>"
+            }
+            document.getElementById("here").innerHTML = output;
+        }
+
+        // js는 var과 function을 맨위로 끌어올린다. 호이스팅
+        // var js1;
+        console.log("js1=" + js1);
+        var js1 = 100;
+        console.log("js1=" + js1);
+        // 함수 정의 전에 호출할 수 있다
+        call7();
+
+        function call7() {
+            console.log("js2=" + js2);
+            var js2 = 100;
+            console.log("js2=" + js2);
+
+            const js3 = 300;
+            // js3 = 400;  // 상수는 변경 불가
+
+            let js4 = 100;
+            js4 = 300;
+            // let js4 = 500;  // 재선언 불가
+
+        }
+
+        function call8() {
+            var result = sum(1, 10) + sum(1, 100);
+            here.innerHTML = result;
+        }
+
+        function sum(start, end) {
+            var total = 0;
+            for (let i = start; i < end; i++) {
+                total += i;
+            }
+            return total;
+        }
+
+        // 이름이 있는 함수 - 선언적 함수
+        function call9() {
+            // 내부함수 - 함수내의 함수
+            innerFucntion();
+            function innerFucntion() {
+                console.log("내부함수 - 함수내의 함수");
+            }
+            // 익명함수 - 이름이 없는 함수
+            var f1 = function (a, b) {
+                console.log("익명함수 - 이름이 없는 함수" + (a + b))
+                return a + b;
+            }
+            var result = f1(10, 20);  // 인수를 주고 함수를 호출한것임, 함수의 매개변수가 값을 받는다.
+            console.log("받은값:" + result);
+
+            // 즉시 실행함수
+            var result2 = (function (a, b) {
+                console.log("익명함수 - 이름이 없는 함수" + (a + b))
+                return a + b;
+            })(30, 40);
+            console.log("받은값:" + result2);
+
+        }
+
+        // 2. 익명함수(이름이 없음)
+        f = function call1() { };
+    </script>
+</head>
+
+<body>
+    <h1>JavaScript 연습</h1>
+    <button id="btn1" onclick="call1()">about variable</button>
+    <button id="btn2" onclick="call2()">about variable2</button>
+    <button id="btn3" onclick="call3()">논리 연산자</button>
+    <button id="btn4" onclick="call4()">조건문</button>
+    <button id="btn5" onclick="call5()">반복문</button>
+    <button id="btn6" onclick="call6()">반복문(구구단)</button>
+    <button id="btn7" onclick="call7()">호이스팅</button>
+    <button id="btn8" onclick="call8()">return</button>
+    <button id="btn9" onclick="call9()">익명함수</button>
+    <br>
+    점수: <input type="number" id="score" value="100">
+    <hr>
+    <div id="here">Here</div>
+</body>
+
+</html>

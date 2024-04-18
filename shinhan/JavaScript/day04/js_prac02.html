@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>JavaScript 문법</h1>
+    <button id="btn01">alert</button>
+    <button id="btn02">confirm</button>
+    <button id="btn03">prompt</button>
+    <button id="btn04">data type</button>
+    <button id="btn05">write</button>
+    <button id="btn06">wrong variable name</button>
+    <button id="btn07">===</button>
+    <hr>
+    <div id="here">
+        여기에 출력하고자 한다.
+    </div>
+</body>
+<script>
+    // js는 동적 타입핑이다. 값이 할당되면 타입이 결정됨
+    var a = document.getElementById("btn01");
+    var b = document.getElementById("btn02");
+    var c = document.getElementById("btn03");
+    var d = document.getElementById("btn04");
+    var e = document.getElementById("btn05");
+    var f = document.getElementById("btn06");
+    var g = document.getElementById("btn07");
+
+    var here = document.getElementById("here");
+
+    a.onclick = function () {
+        console.log("btn1 pressed!");
+        document.getElementById("here").innerHTML = "btn1 pressed!" + a.innerHTML;
+        alert("알림창 보이기");
+    };
+
+    b.onclick = function () {
+        console.log("btn2 pressed!");
+        var result = confirm("계속 하시겠습니까?")
+        if (result) {
+            // alert("계속");
+            location.href = "js_prac01.html";
+        } else {
+            alert("중단")
+        }
+        document.getElementById("here").innerHTML = "btn2 pressed!" + result;
+    };
+
+    c.onclick = function () {
+        var age = prompt("나이를 입력하세요", 20);
+        here.innerHTML = Number(age) + 10;
+    };
+
+    d.onclick = function () {
+        // number, string, boolean, object, function, undefined
+        // 변수선언은 필수가 아님
+        // undefined는 변수 선언은 하였지만 값은 할당되지 않음
+        var v1;
+        here.innerHTML = v1 + "->" + typeof (v1);
+        v1 = 100;
+        here.innerHTML += "<br>" + v1 + "->" + typeof (v1);
+        v1 = "문자";
+        here.innerHTML += "<br>" + v1 + "->" + typeof (v1);
+        v1 = 10 > 0;
+        here.innerHTML += "<br>" + v1 + "->" + typeof (v1);
+        v1 = [1, 2, 3];  // 배열
+        here.innerHTML += "<br>" + v1 + "->" + typeof (v1);
+        v1 = { name: "gingdong" };  // object
+        here.innerHTML += "<br>" + v1 + "->" + typeof (v1);
+        v1 = function () { alert("함수입니다.") };
+        here.innerHTML += "<br>" + v1 + "->" + typeof (v1);
+        v1();
+    };
+
+    e.onclick = function () {
+        document.write("<h1>write 함수</h1>")
+    };
+
+    f.onclick = function () {
+        var alert = "변수이름을 예약어로 사용";
+        alert(alert);
+    };
+
+    g.onclick = function () {
+        here.innerHTML = 10 == "10";  // 값이 같다
+        here.innerHTML += "<br>" + (10 === "10");  // 값과 타입 체크
+    }
+</script>
+
+</html>7t

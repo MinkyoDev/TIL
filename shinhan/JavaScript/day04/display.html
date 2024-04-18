@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+a {
+  display: block;
+}
+.A a {
+    display: block;
+}
+.C a:first-child {
+    /* 자리 차지 안함 */
+    /* display: none; */
+    /* 자리 차지함 */
+    visibility: hidden;
+}
+</style>
+</head>
+<body>
+
+<h1>Display links as block elements</h1>
+
+<h1>display가 inline</h1>
+<div class="A">
+    <a href="/html/default.asp" target="_blank">HTML</a>
+    <a href="/css/default.asp" target="_blank">CSS</a>
+    <a href="/js/default.asp" target="_blank">JavaScript</a>
+</div>
+<h1>display가 inline</h1>
+<div class="B">
+    <a href="/html/default.asp" target="_blank">HTML</a>
+    <a href="/css/default.asp" target="_blank">CSS</a>
+    <a href="/js/default.asp" target="_blank">JavaScript</a>
+</div>
+<h1>display가 inline</h1>
+<div class="C">
+    <a href="/html/default.asp" target="_blank">HTML</a>
+    <a href="/css/default.asp" target="_blank">CSS</a>
+    <a href="/js/default.asp" target="_blank">JavaScript</a>
+</div>
+
+</body>
+</html>
+
+
