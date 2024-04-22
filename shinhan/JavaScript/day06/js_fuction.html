@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = init;
+
+        function init() {
+            document.querySelector('#btn1').addEventListener("click", f1);
+            document.querySelector('#btn2').addEventListener("click", f2);
+            document.querySelector('#btn3').addEventListener("click", f3);
+            document.querySelector('#btn4').addEventListener("click", f4);
+            document.querySelector('#btn5').addEventListener("click", f5);
+            document.querySelector('#btn5').addEventListener("click", f5);
+            document.querySelector('#btn6').addEventListener("click", f6);
+            document.querySelector('#btn7').addEventListener("click", f7);
+            document.querySelector('#btn8').addEventListener("click", f8);
+            document.querySelector('#btn8').addEventListener("click", f8);
+        }
+
+        function f1() {
+            var call = function () {
+                document.querySelector("#here").innerHTML = "<h1>익명함수</h1>";
+            }
+            call();
+        }
+        function f2() {
+            (function () {
+                document.querySelector("#here").innerHTML = "<h1>익명함수(즉시실행)</h1>";
+            })();
+        }
+        function f3() {
+            document.querySelector("#here").innerHTML = sumAll(1, 2, 3, 4, 5);
+            // document.querySelector("#here").innerHTML = sumAll(1);
+        }
+        // argument 개수는 일지하지 않아도 무관, 많으면 안들어오고 적으면 Undefined
+        // NaN : Not a Number
+        function sumAll(a, b) {
+            var total = 0;
+            for (let i = 0; i < arguments.length; i++) {
+                total += arguments[i];
+            }
+            return total;
+        }
+        // 같은 이름의 함수가 있으면 나중것이 적용됨
+        function sumAll(a, b) {
+            return 100;
+        }
+        function f4() {
+            var width = 3;
+            var heigth = 4;
+            var result = Math.sqrt(square(width) + square(heigth));
+            document.querySelector("#here").innerHTML = result;
+            
+            // 내부함수
+            function square(a) {
+                return a * a;
+            }
+        }
+        function square(a) {
+            return a;
+        }
+        function f5() {
+            var call2 = function () {
+                document.querySelector("#here").innerHTML = "callback 함수";
+            }
+            call3(call2);
+        }
+        // callback 함수 : 매개변수로 전달되는 함수, 받은쪽에서 호출
+        function call3(f) {
+            f();
+        }
+        function f6(){
+            timer1 = setInterval(call4, 1000)  // 1초 후 call4가 호출됨
+        }
+        function call4(){
+            document.querySelector("#here").innerHTML = new Date();
+        }
+        function f7(){
+            clearInterval(timer1);
+        }
+        function f8(){
+            var result = call5();
+            document.querySelector("#here").innerHTML = result();
+        }
+        function call5(){
+            var i = 100;
+            var f = function(){
+                i++;
+                return i;
+            }
+            return f;
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Function</h1>
+    <button id="btn1">function1(익명함수)</button>
+    <button id="btn2">function2(즉시실행함수)</button>
+    <button id="btn3">function3(가변인자)</button>
+    <button id="btn4">function4(내부함수)</button>
+    <button id="btn5">(콜백함수)</button>
+    <button id="btn6">(timer)</button>
+    <button id="btn7">(stop)</button>
+    <button id="btn8">(함수 return)</button>
+    <button id="btn9">(클로저)</button>
+    <hr>
+    <div id="here">
+        here
+    </div>
+</body>
+
+</html>

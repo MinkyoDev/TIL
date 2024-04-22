@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = init;
+        function init(){
+            document.querySelector("#btn1").addEventListener("click", f1);
+        }
+
+        function f1(){
+            try {
+                var arr = new Array(9999999999999);
+            } catch(e) {
+                console.dir(e);
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>JS Exception</h1>
+    <button id="btn1">exception</button>
+    <hr>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/underscore@1.13.6/underscore-umd-min.js"></script>
+    <script>
+        function f1() {
+            var arr = [10, 20, 30];
+            console.log(arr[0]);
+
+            var obj = { 1: "홍길동", 2: 20, "전공": "컴공", 과목: "JS" };
+            console.log(obj[1]);
+            console.log(obj[2]);
+            console.log(obj["전공"]);
+            console.log(obj["과목"]);
+            console.log(obj.과목);
+
+            for (let pro in obj) {
+                console.log(obj[pro]);
+            }
+        }
+
+        window.onload = init;
+
+        function init() {
+            document.querySelector("#btn1").addEventListener("click", f2);
+            document.querySelector("#btn2").addEventListener("click", f3);
+            document.querySelector("#btn3").addEventListener("click", f4);
+            document.querySelector("#btn4").addEventListener("click", f5);
+            document.querySelector("#btn5").addEventListener("click", f6);
+            document.querySelector("#btn7").addEventListener("click", f7);
+        }
+        function f7(){
+            // JSON(JavaScript Object Notation)
+            var student = { name: "홍길동", java: 100, sql: 90, js: 80 };
+            console.log(student);
+            console.log(typeof(student));
+            var str = JSON.stringify(student);
+            console.log(str);
+            console.log(typeof(str));
+
+            var student2 = JSON.parse(str);
+            console.log(student2.java);
+        }
+        function f6() {
+            var arr = ["월", "화", "수", "목", "금", "토"]
+            arr.forEach(function (data, seq, obj) {
+                console.log(seq + "번째 => " + data);
+            });
+            var arr2 = arr.map(function (data) { return data.charAt(0); })
+            console.log(arr2);
+            
+            var arr = [1, 2, 3, 4, 5];
+            var arr2 = arr.filter(function (data) { return data % 2 == 0 })
+            console.log(arr2);
+        }
+        function f5() {
+            var arr = [];
+            var arr2 = new Array();
+            var num = new Number();
+            var students = [];
+
+            students.push(new Student("홍길동1", 100, 90, 80));
+            students.push(new Student("홍길동2", 100, 90, 80));
+            students.push(new Student("홍길동3", 100, 90, 80));
+
+            console.log(students)
+            console.log(students[1])
+            here.innerHTML = students[1];
+        }
+        // js의 최상의 객체는 Object
+        // object에 toString() 메서드가 제공됨.
+        function Student(name, java, sql, js) {
+            this.name = name;
+            this.java = java;
+            this.sql = sql;
+            this.js = js;
+            this.getSum = function () { return this.java + this.sql + this.js };
+            this.getAvg = function () { return this.getSum() / 3 };
+            this.toString = function () { return "이름은 " + this.name + " 평균은 " + this.getAvg() };
+        }
+        function f4() {
+            var score = 100;
+            var score2 = score;
+            score = 200;
+            console.log(score, score2);
+
+            var arr = [10, 20, 30];
+            var arr2 = arr;  // 주소복사
+            var arr3 = _.clone(arr);  // underscore 사용
+            var arr4 = [...arr];  // 전개연산자로 복제
+            arr[0] = 99;
+
+            console.log(arr);
+            console.log(arr2);
+            console.log(arr3);
+            console.log(arr4);
+
+            var obj = { name: "홍길동", java: 100, sql: 90, js: 80 };
+            var obj2 = obj;
+            var obj3 = _.clone(obj); // underscorejs로 복제
+            var obj4 = { ...obj };  // 전개연산자로 복제
+            obj.java = 99;
+
+            console.log(obj.java);
+            console.log(obj2.java);
+            console.log(obj3.java);
+
+            var scores = [10, 2, 13, 55, 43, 15];
+            scores.sort();  // 문자열 정렬
+            console.log(scores);
+            scores.sort(function (a, b) { return a - b; });  // ascending
+            console.log(scores);
+            scores.sort(function (a, b) { return b - a; });  // descending
+            console.log(scores);
+            scores.sort((a, b) => b - a);
+            console.log(scores);
+            scores = _.sortBy(scores);
+            console.log(scores);
+            scores = _.sortBy(scores, (a, b) => b - a);
+            console.log(scores);
+        }
+        function f3() {
+            var students = [];
+            students.push({ name: "홍길동20", java: 100, sql: 90, js: 80 });
+            students.push({ name: "홍길동12", java: 100, sql: 91, js: 81 });
+            students.push({ name: "홍길동3", java: 100, sql: 92, js: 82 });
+            students.push({ name: "홍길동2", java: 100, sql: 93, js: 83 });
+
+            students = _.sortBy(students, "name");
+            console.log(students);
+
+            for (let index in students) {
+                students[index].getSum = function () {
+                    return this.java + this.sql + this.js;
+                }
+                students[index].getAvg = function () {
+                    return this.getSum() / 3;
+                }
+                console.log(students[index].getSum(), students[index].getAvg());
+            }
+        }
+        function f2() {
+            var obj = { name: "홍길동" };
+            obj.age = 20;
+            obj.major = "컴공";
+            obj.myInfo = function () { here.innerHTML = this.name };
+            obj.myInfo();
+        }
+    </script>
+</head>
+
+<body>
+    <h1>JS Object</h1>
+    <button id="btn1">obj 속성추가</button>
+    <button id="btn2">obj 배열</button>
+    <button id="btn3">복사</button>
+    <button id="btn4">생성자 함수</button>
+    <button id="btn5">forEach/map</button>
+    <button id="btn7">json</button>
+    <hr>
+    <div id="here">here</div>
+</body>
+
+</html>

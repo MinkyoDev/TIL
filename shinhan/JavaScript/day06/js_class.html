@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = init;
+        function init() {
+            document.querySelector("#btn1").addEventListener("click", f1);
+        }
+
+        function f1() {
+            var s1 = new Student("은정", 100, 90, 80);
+            console.log(s1);
+            console.log(s1.toString());
+        }
+
+        class Student {
+            constructor(name, java, sql, js) {
+                this.name = name;
+                this.java = java;
+                this.sql = sql;
+                this.js = js;
+            }
+            // class 내의 함수는 function 예약어를 사용하지 않음.
+            getSum() {
+                return this.java + this.sql + this.js;
+            }
+            getAvg() {
+                return this.getSum() / 3;
+            }
+            toString(){
+                return "이름은 " + this.name + " 평균은 " + this.getAvg();
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h1>JS Class</h1>
+    <button id="btn1">class</button>
+    <hr>
+</body>
+
+</html>

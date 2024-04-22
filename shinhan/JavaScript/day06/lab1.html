@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = init;
+
+        function init(){
+            document.querySelector('#btn1').addEventListener("click", calculate);
+        }
+        
+        function calculate(){
+            var nums = document.querySelectorAll("#num");
+            var oper = document.querySelector("select");
+
+            result.value = eval(nums[0].value + oper.value + nums[1].value);
+        }
+    </script>
+</head>
+<body>
+    <h1>사칙연산(eval 함수이용)</h1>
+    <input id="num" type="number">
+    <select>
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+    </select>
+    <input id="num" type="number">
+    <button id="btn1">=</button>
+    <input id="result" type="number" readonly>
+</body>
+</html>
