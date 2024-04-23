@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(function(){
+            $("#images").on("mouseenter", f3);
+            $("#images").on("mouseleave", f4);
+
+            $("button").first().on("click", f2);
+
+            var obj = {"mouseenter": f5, "mouseleave":f6};
+            $("h1").first().on(obj);
+
+            $("button").eq(1).on("click", function(){
+                $("h1").off("mouseenter");
+                $("h1").off("mouseleave");
+            })
+            $("button").eq(2).on("click", function(){
+                $("button").first().trigger("click");
+            })
+            $("#userid").on("keyup", f7)
+            $("#userid").on("change", f8)
+            $("#select").on("select", f8)
+        })
+
+        function f8(){
+            alert($(this).val());
+        }
+        function f7(){
+            $("#userid2").text($(this).val());
+        }
+        function f6(){
+            $(this).addClass("blue");
+            $(this).removeClass("red");
+        }
+        function f5(){
+            $(this).addClass("red");
+            $(this).removeClass("blue");
+        }
+        function f4(){
+            clearInterval(timer);
+        }
+        function f3(){
+            timer = setInterval(f, 1000);
+        }
+        function f2(){
+            // $("h1").first().appendTo("#here");
+            $("h1").first().clone().appendTo("#here");
+        }
+        function f(){
+            // $("#images>img").first().appendTo("#images");
+            $("#images>img").first().appendTo("#images");
+        }
+    </script>
+    <style>
+        h1 {
+            background-color: orange;
+        }
+        .red {
+            color: red;
+            border: 2px solid red;
+        }
+        .blue {
+            color: blue;
+            border: 2px solid blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Title1</h1>
+    <div id="images">
+        <img src="../day06/images/img1.jpg" alt="1">
+        <img src="../day06/images/img2.jpg" alt="2">
+        <img src="../day06/images/img3.jpg" alt="3">
+        <img src="../day06/images/img4.jpg" alt="4">
+        <img src="../day06/images/img5.jpg" alt="5">
+    </div>
+    <button>h1=>here로 이동</button>
+    <button>이벤트 제거</button>
+    <button>이벤트 강제발생 triger</button>
+    <hr>
+    <select id="select">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+    </select>
+    <input id="userid">
+    <p id="userid2">here</p>
+    <hr>
+    <div id="here">here</div>
+</body>
+
+</html>

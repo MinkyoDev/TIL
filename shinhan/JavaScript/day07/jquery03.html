@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $("button").eq(0).on("click", function () {
+                $("img").first().attr("src", "../Doit_src/17/images/cup-2.png");
+                // $("img").attr({"width": "100px", "height": "100px"});
+                $("img").attr({ "width": function (index) { return (index + 1) * 100 }, "height": "100px" });
+
+                var aa = $("img").attr("src");
+                console.log(aa);
+            })
+
+            $("button").eq(1).on("click", function () {
+                $("img").each(function () {
+                    $(this).removeAttr("src");
+                })
+            })
+            $("button").eq(2).on("click", function () {
+                var arr = ["blue", "green", "pink"];
+                $("img").css("border", function (index) {
+                    return `3px solid ${arr[index]}`
+                })
+            })
+            $("button").eq(3).on("click", function () {
+                var a = $("#here").text();
+                var b = $("#here").html();
+                console.log(a);
+                console.log(b);
+                $("#here").text("<h1>text setting하기</h1>");
+                $("#here").html("<h1>text setting하기</h1>");
+                $("#here").html(function () {
+                    return "<h1>문자열을 return하면 나옴</h1>"
+                })
+            })
+            $("button").eq(4).on("click", function () {
+                // $("#imgs").remove();  // 객체 자체 지우기
+                $("#imgs").empty();  // 객체 내부 지우기
+            })
+            $("button").eq(5).on("click", function () {
+                $("<h1></h1>").text("동적생성").appendTo("#here");
+                $("<h1></h1>").html("<p>동적생성</p>").appendTo("#here");
+                $("<img>").attr("src", "../Doit_src/17/images/cup-2.png").appendTo("#here");
+
+                $("<h1>appendTo</h1>").appendTo("#here");
+                $("<h1>prependTo</h1>").prependTo("#here");
+                $("<h1>insertBefore</h1>").insertBefore("#here");
+                $("<h1>insertAfter</h1>").insertAfter("#here");
+            })
+        })
+    </script>
+    <style>
+        #imgs {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Title1</h1>
+    <div id="imgs">
+        <img src="../Doit_src/17/images/cup-1.png" alt="a">
+        <img src="../Doit_src/17/images/cup-1.png" alt="b">
+        <img src="../Doit_src/17/images/cup-1.png" alt="c">
+    </div>
+    <br>
+    <button>이미지 사이즈 조절</button>
+    <button>속성제거</button>
+    <button>css 변경</button>
+    <button>html(), text()</button>
+    <button>empty(), remove()</button>
+    <button>객체 동적 생성</button>
+    <hr>
+    <div id="here">here</div>
+</body>
+
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CDN이용하기 -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <script>
+        window.onload = function () { console.log("load됨1") }  // 무효
+        window.onload = function () { console.log("load됨2") }  // 유효
+        $(document).ready(function () {  // 유효
+            console.log("load됨3");
+        });
+        $(document).ready(function () {  // 유효
+            console.log("load됨4");
+        });
+        // document, ready 생략가능
+        $(function () {
+            console.log("load됨5");
+        });
+        jQuery(function () {
+            console.log("load됨6");
+        });
+
+        $(function () {
+            $("h1").css("color", "red");
+
+            var obj = { "background-color": "lightgray", border: "3px dotted green" }
+            $("h1").css(obj);
+
+            // 전부 적용
+            $(".my").css("font-size", "50px");
+
+            $("input[type='text']").css("background-color", "lightpink");
+            $("input[type='text']").val("input value");
+            document.querySelector("input:nth-of-type(3)").val = "js input value";
+            $("input[name |= 'tag']").val("tag또는 tag-");
+            $("input[name *= 'first']").val("first가 포함됨");
+            $("input[name ^= 'second']").val("second로 시작");
+            $("input[name $= 'third']").val("third로 끝");
+            $("input[name ~= 'forth']").val("forth가 있는가(단어)");
+
+            $("input[data-aa]").val("속성이 존재하는가");
+            $("input[type='email'][data-aa=200]").val("복수조건");
+
+            $("input[type='button']").css("color", "red");
+            $("input:button").css("background-color", "lightgreen");
+            $("input:disabled").val("disabled!!")
+        })
+    </script>
+    <style>
+    </style>
+</head>
+
+<body>
+    <h1>jQuery prac1</h1>
+    <h1>jQuery prac2</h1>
+    <h1 class="my">jQuery prac3</h1>
+    <p class="my">ppppppppppppp</p>
+    <input type="text"><br>
+    <input type="text"><br>
+    <input type="number"><br>
+    <input type="password"><br>
+    <input name="tag"><br>
+    <input name="tag-aa"><br>
+    <input name="aaaafirst-aa"><br>
+    <input name="secondaaaaaa"><br>
+    <input name="bbbbbbbbbthird"><br>
+    <input name="123 forth 123"><br>
+    <input data-aa="100"><br>
+    <input type="email" data-aa="200"><br>
+    <input type="button" value="btn1"><br>
+    <input type="button" value="btn2"><br>
+    <input type="button" value="btn3"><br>
+    <input type="text" disabled><br>
+    <select>
+        <option>월</option>
+        <option>화</option>
+        <option>수</option>
+        <option>목</option>
+        <option>금</option>
+        <option>토</option>
+    </select>
+    <table>
+        <tr>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
+        </tr>
+        <tr>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
+        </tr>
+        <tr>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
+        </tr>
+    </table>
+
+    <script>
+        $(function () {
+            setTimeout(function () {
+                // var data = $("select option:selected").val();
+                var data = $("select").val();
+                // alert(data);
+                console.log(data);
+            }, 3000);
+        })
+
+        $("table, td").css("border", "1px solid black");
+        $("table, td").css("border-collapse", "collapse");
+        $("td").css("padding", "10px");
+        $("tr:even").css("background-color", "lightblue");
+
+    </script>
+</body>
+
+</html>
