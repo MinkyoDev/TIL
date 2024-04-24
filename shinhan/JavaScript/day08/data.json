@@ -1,0 +1,34 @@
+{
+    "nations": [
+        {
+            "no": 1,
+            "name": "미국",
+            "capital": "워싱턴DC",
+            "region": "america"
+        },
+        {
+            "no": 2,
+            "name": "미국",
+            "capital": "워싱턴DC",
+            "region": "america"
+        },
+        {
+            "no": 3,
+            "name": "미국",
+            "capital": "워싱턴DC",
+            "region": "america"
+        },
+        {
+            "no": 4,
+            "name": "미국",
+            "capital": "워싱턴DC",
+            "region": "america"
+        },
+        {
+            "no": 5,
+            "name": "미국",
+            "capital": "워싱턴DC",
+            "region": "america"
+        }
+    ]
+}
