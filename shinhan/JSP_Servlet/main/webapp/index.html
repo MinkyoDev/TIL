@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>JSP/Servlet 시작</h1>
+	<hr>
+	<ul>
+		<li><a href="/webshop/first?userid=200">first servlet(abs)</a></li>
+		<li><a href="first?userid=300">first servlet</a></li>
+		<li>
+			<form action="first" method="get">
+				<input type="text" name="userid" value="1234">
+				<input type="submit" value="get요청">
+			</form>
+		</li>
+		<li>
+			<form action="first" method="post">
+				<input type="text" name="userid" value="1234">
+				<input type="submit" value="post요청">
+			</form>
+		</li>
+		<li><a href="emp/empList">모든 직원조회</a></li>
+		<li>
+			<form action="emp/empDetail" method="get">
+				<input type="text" name="empid" value="100">
+				<input type="submit" value="직원정보">
+			</form>
+		</li>
+		<li><a href="dept/deptList">모든 부서조회</a></li>
+		<li><a href="dept/deptInsert">부서입력</a></li>
+		<li>
+			<form action="dept/deptDetail" method="get">
+				<input type="text" name="deptid" value="100">
+				<input type="submit" value="부서정보">
+			</form>
+		</li>
+	</ul>
+</body>
+</html>
