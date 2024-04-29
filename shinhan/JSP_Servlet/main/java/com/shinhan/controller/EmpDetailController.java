@@ -1,6 +1,7 @@
 package com.shinhan.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.shinhan.dept.DeptDTO;
+import com.shinhan.dept.DeptService;
 import com.shinhan.emp.EmpDTO;
 import com.shinhan.emp.EmpService;
 
@@ -30,6 +33,12 @@ public class EmpDetailController extends HttpServlet {
 		EmpDTO emp = empService.selectByID(i_empid);
 		System.out.println(emp);
 		
+
+		
+		DeptService deptService = new DeptService();
+		List<DeptDTO> deptList = deptService.selectAll();
+		System.out.println(deptList.size() + "건");
+		request.setAttribute("deptlist", deptList);
 		// 요청문서에 data 저장
 		request.setAttribute("empInfo", emp);
 		

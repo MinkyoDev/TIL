@@ -21,8 +21,9 @@ public class EmpListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		EmpService empService = new EmpService();
 		List<EmpDTO> empList = empService.selectAll();
-		request.setAttribute("emplist", empList);
+		request.setAttribute("emplist", empList);  // 요청문서에 추가로 저장
 		
+		// Dispatcher : 위임. servlet이 jsp로
 		RequestDispatcher rd = request.getRequestDispatcher("empList.jsp");
 		rd.forward(request, response);
 
