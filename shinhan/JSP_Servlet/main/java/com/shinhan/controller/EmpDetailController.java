@@ -52,7 +52,7 @@ public class EmpDetailController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// 요청문서의 내용을 담아서 온다. 자동 encoding 안됨
-		request.setCharacterEncoding("utf-8");
+//		request.setCharacterEncoding("utf-8");
 		EmpDTO emp = makeEmp(request);
 		EmpService empService = new EmpService();
 		String result = String.valueOf(empService.empUpdate(emp)) + "건이 수정됨";

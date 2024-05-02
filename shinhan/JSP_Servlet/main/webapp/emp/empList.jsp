@@ -11,7 +11,6 @@
 </script>
 </head>
 <body>
-<h1>${loginEmp.first_name}님 환영합니다.</h1>
 <a href="empInsert.do">신규직원등록</a>
 <a href="javascript:location.href'empInsert.do'">신규직원등록</a>
 <h1>직원 전부조회</h1>

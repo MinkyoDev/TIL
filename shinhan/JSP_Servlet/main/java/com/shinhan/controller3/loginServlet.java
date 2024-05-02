@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import com.shinhan.emp.EmpDTO;
 import com.shinhan.emp.EmpService;
+import com.shinhan.filter.LoginImpl;
 
 @WebServlet("/auth/login.do")
 public class loginServlet extends HttpServlet {
@@ -38,8 +39,13 @@ public class loginServlet extends HttpServlet {
 		} else {
 			// 로그인 성공
 			HttpSession session = request.getSession();
+
+//			LoginImpl loginsUser = new LoginImpl(email, phone);
+//			if(session.isNew()) {
+//				session.setAttribute("loginUser", loginsUser);
+//			}
 			session.setAttribute("loginEmp", emp);
-			response.sendRedirect("../emp/empList");
+			response.sendRedirect("loginSuccess");
 			return;
 		}
 		
