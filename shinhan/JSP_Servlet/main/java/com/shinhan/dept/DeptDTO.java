@@ -20,8 +20,12 @@ import lombok.ToString;
 @ToString
 @Getter@Setter
 public class DeptDTO {
-	int DEPARTMENT_ID;
-	String DEPARTMENT_NAME;
-	int MANAGER_ID;
-	int LOCATION_ID;
+//	int DEPARTMENT_ID;
+	int department_id;
+//	String DEPARTMENT_NAME;
+	String department_name;
+//	int MANAGER_ID;
+	int manager_id;
+//	int LOCATION_ID;
+	int location_id;
 }

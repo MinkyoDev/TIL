@@ -11,6 +11,9 @@ public class EmpService {
 
 	EmpDAO empDAO = new EmpDAO();
 
+	public EmpDTO loginCheck(String email, String phone) {
+		return empDAO.loginCheck(email, phone);
+	}
 	// 1. 직원 모두 조회
 	public List<EmpDTO> selectAll() {
 		return empDAO.selectAll();

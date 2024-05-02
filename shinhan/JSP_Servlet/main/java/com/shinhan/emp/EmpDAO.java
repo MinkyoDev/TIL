@@ -22,6 +22,37 @@ public class EmpDAO {
 	Statement st;
 	PreparedStatement pst; // Statement를 상속받음, 바인딩변수 지원, 변수를 바꿀 때 더 효율적
 	ResultSet rs;
+	
+	// 로그인 하기
+		public EmpDTO loginCheck(String email, String phone) {
+			String sql = "select employee_id, first_name, phone_number from employees where email = ?";
+			EmpDTO emp = null;
+			conn = DBUtil.dbConnection();
+			try {
+				pst = conn.prepareStatement(sql);
+				pst.setString(1, email);
+				rs = pst.executeQuery();
+				if (rs.next()) {
+//					emp = makeEmp(rs);
+					if(rs.getString("phone_number").equals(phone)) {
+						emp = new EmpDTO();
+						emp.setEmployee_id(rs.getInt("employee_id"));
+						emp.setFirst_name(rs.getString("first_name"));
+					} else {
+						emp = new EmpDTO();
+						emp.setEmployee_id(-2);  // 비밀번호 오류
+					}
+				} else {
+					emp = new EmpDTO();
+					emp.setEmployee_id(-1);  // 존재하지 않는 직원
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				DBUtil.dbDisconnect(conn, st, rs);
+			}
+			return emp;
+		}
 
 	// 1. 직원 모두 조회
 	public List<EmpDTO> selectAll() {

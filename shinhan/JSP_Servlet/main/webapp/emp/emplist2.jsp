@@ -1,19 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script>
-	
-</script>
-</head>
-<body>
-<a href="empInsert.do">신규직원등록</a>
-<a href="javascript:location.href'empInsert.do'">신규직원등록</a>
-<h1>직원 전부조회</h1>
+
 <table border="1">
 	<thead>
 		<tr>
@@ -49,5 +37,3 @@
 		</c:forEach>
 	</tbody>
 </table>
-</body>
-</html>

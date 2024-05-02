@@ -37,6 +37,32 @@
 				<input type="submit" value="부서정보">
 			</form>
 		</li>
+		<li>
+			<form action="jsp/set">
+				<input type="text" name="myname" value="min">
+				<input type="submit" value="전송">
+			</form>	
+		</li>
+		<li>
+		cookieSet:
+			<form action="jsp/cookieSet">
+				<input type="text" name="userid" value="min">
+				<input type="text" name="userpw" value="1234">
+				<input type="submit" value="전송">
+			</form>	
+		</li>		
+		<li>
+		setSession: 
+			<form action="jsp/setSession">
+				<input type="text" name="userid" value="min">
+				<input type="text" name="userpw" value="1234">
+				<input type="submit" value="전송">
+			</form>	
+			<form action="jsp/getSession">
+				<input type="submit" value="getSession">
+			</form>	
+		</li>		
 	</ul>
+	
 </body>
 </html>

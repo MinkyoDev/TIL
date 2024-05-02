@@ -51,10 +51,10 @@ public class DeptDAO {
 		try {
 			
 			pst = conn.prepareStatement(sql);
-			pst.setString(1, dept.getDEPARTMENT_NAME());
-			pst.setInt(2, dept.getMANAGER_ID());
-			pst.setInt(3, dept.getLOCATION_ID());
-			pst.setInt(4, dept.getDEPARTMENT_ID());
+			pst.setString(1, dept.getDepartment_name());
+			pst.setInt(2, dept.getManager_id());
+			pst.setInt(3, dept.getLocation_id());
+			pst.setInt(4, dept.getDepartment_id());
 			result = pst.executeUpdate(); //DML문장은 executeUpdate, Select문은 executeQuery //건수, 못하면 0, 에러나면 -1
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -74,10 +74,10 @@ public class DeptDAO {
 		try {
 			
 			pst = conn.prepareStatement(sql);
-			pst.setInt(1, dept.getDEPARTMENT_ID());
-			pst.setString(2, dept.getDEPARTMENT_NAME());
-			pst.setInt(3, dept.getMANAGER_ID());
-			pst.setInt(4, dept.getLOCATION_ID());
+			pst.setInt(1, dept.getDepartment_id());
+			pst.setString(2, dept.getDepartment_name());
+			pst.setInt(3, dept.getManager_id());
+			pst.setInt(4, dept.getLocation_id());
 			result = pst.executeUpdate(); //DML문장은 executeUpdate, Select문은 executeQuery //건수, 못하면 0, 에러나면 -1
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -166,10 +166,10 @@ public class DeptDAO {
 	private DeptDTO makeDept(ResultSet rs) throws SQLException {
 		DeptDTO dept = new DeptDTO();
 		//총 4개
-		dept.setDEPARTMENT_ID(rs.getInt("department_id"));
-		dept.setDEPARTMENT_NAME(rs.getString("department_name"));
-		dept.setLOCATION_ID(rs.getInt("location_id"));
-		dept.setMANAGER_ID(rs.getInt("manager_id"));
+		dept.setDepartment_id(rs.getInt("department_id"));
+		dept.setDepartment_name(rs.getString("department_name"));
+		dept.setLocation_id(rs.getInt("location_id"));
+		dept.setManager_id(rs.getInt("manager_id"));
 		
 		return dept;
 	}
