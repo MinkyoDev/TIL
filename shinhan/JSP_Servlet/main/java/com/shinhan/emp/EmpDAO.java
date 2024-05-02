@@ -22,37 +22,37 @@ public class EmpDAO {
 	Statement st;
 	PreparedStatement pst; // Statement를 상속받음, 바인딩변수 지원, 변수를 바꿀 때 더 효율적
 	ResultSet rs;
-	
+
 	// 로그인 하기
-		public EmpDTO loginCheck(String email, String phone) {
-			String sql = "select employee_id, first_name, phone_number from employees where email = ?";
-			EmpDTO emp = null;
-			conn = DBUtil.dbConnection();
-			try {
-				pst = conn.prepareStatement(sql);
-				pst.setString(1, email);
-				rs = pst.executeQuery();
-				if (rs.next()) {
+	public EmpDTO loginCheck(String email, String phone) {
+		String sql = "select employee_id, first_name, phone_number from employees where email = ?";
+		EmpDTO emp = null;
+		conn = DBUtil.dbConnection();
+		try {
+			pst = conn.prepareStatement(sql);
+			pst.setString(1, email);
+			rs = pst.executeQuery();
+			if (rs.next()) {
 //					emp = makeEmp(rs);
-					if(rs.getString("phone_number").equals(phone)) {
-						emp = new EmpDTO();
-						emp.setEmployee_id(rs.getInt("employee_id"));
-						emp.setFirst_name(rs.getString("first_name"));
-					} else {
-						emp = new EmpDTO();
-						emp.setEmployee_id(-2);  // 비밀번호 오류
-					}
+				if (rs.getString("phone_number").equals(phone)) {
+					emp = new EmpDTO();
+					emp.setEmployee_id(rs.getInt("employee_id"));
+					emp.setFirst_name(rs.getString("first_name"));
 				} else {
 					emp = new EmpDTO();
-					emp.setEmployee_id(-1);  // 존재하지 않는 직원
+					emp.setEmployee_id(-2); // 비밀번호 오류
 				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} finally {
-				DBUtil.dbDisconnect(conn, st, rs);
+			} else {
+				emp = new EmpDTO();
+				emp.setEmployee_id(-1); // 존재하지 않는 직원
 			}
-			return emp;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbDisconnect(conn, st, rs);
 		}
+		return emp;
+	}
 
 	// 1. 직원 모두 조회
 	public List<EmpDTO> selectAll() {
@@ -279,15 +279,15 @@ public class EmpDAO {
 		}
 		return result;
 	}
-	
+
 	// 9. 직원 번호를 이용해서 직원의 이름과 직책과 급여를 조회한다.
 	public Map<String, Object> empInfo(int empid) {
 		Map<String, Object> empMap = new HashMap<>();
-		
+
 		String fname = null;
 		String job = null;
 		int salary = 0;
-		
+
 		String sql = "{call sp_empInfo(?, ?, ?, ?)}";
 		CallableStatement cstmt = null;
 		conn = DBUtil.dbConnection();
@@ -311,7 +311,7 @@ public class EmpDAO {
 		}
 		return empMap;
 	}
-	
+
 	// 10. 직원번호가 들어오면 직원 보너스를 return하는 함수를 호출한다.
 	public double callFunction(int empid) {
 		double bonus = 0;

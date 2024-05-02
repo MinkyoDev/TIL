@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.shinhan.emp.EmpDTO;
 import com.shinhan.emp.EmpService;
@@ -30,11 +31,19 @@ public class loginServlet extends HttpServlet {
 		EmpDTO emp = empService.loginCheck(email, phone);
 		if (emp == null || emp.getEmployee_id() == -1) {
 			// 존재하지 않는 직원
+			request.setAttribute("message", "존재하지 않는 직원");
 		} else if (emp.getEmployee_id() == -2) {
 			// 비밀번호 오류
+			request.setAttribute("message", "비밀번호가 틀림");
 		} else {
 			// 로그인 성공
+			HttpSession session = request.getSession();
+			session.setAttribute("loginEmp", emp);
+			response.sendRedirect("../emp/empList");
+			return;
 		}
+		
+		request.getRequestDispatcher("result.jsp").forward(request, response);
 	}
 
 }
