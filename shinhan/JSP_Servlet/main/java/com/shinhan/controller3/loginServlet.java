@@ -11,7 +11,6 @@ import javax.servlet.http.HttpSession;
 
 import com.shinhan.emp.EmpDTO;
 import com.shinhan.emp.EmpService;
-import com.shinhan.filter.LoginImpl;
 
 @WebServlet("/auth/login.do")
 public class loginServlet extends HttpServlet {
