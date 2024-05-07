@@ -44,10 +44,12 @@ public class loginServlet extends HttpServlet {
 //				session.setAttribute("loginUser", loginsUser);
 //			}
 			session.setAttribute("loginEmp", emp);
-			response.sendRedirect("loginSuccess");
+
+			String lastAddress = (String) session.getAttribute("lastRequest");
+			response.sendRedirect(lastAddress);
 			return;
 		}
-		
+
 		request.getRequestDispatcher("result.jsp").forward(request, response);
 	}
 

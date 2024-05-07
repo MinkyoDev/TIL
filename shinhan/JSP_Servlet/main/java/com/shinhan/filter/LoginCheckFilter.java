@@ -34,8 +34,9 @@ public class LoginCheckFilter extends HttpFilter implements Filter {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
 
+		HttpSession session = req.getSession();
 		if (!req.getRequestURI().endsWith("login.do")) {
-			HttpSession session = req.getSession();
+			session.setAttribute("lastRequest", req.getRequestURI());
 			EmpDTO emp = (EmpDTO) session.getAttribute("loginEmp");
 			if (emp == null) {
 				// 로그인되어있지 않으면 로그인 창으로 보냄

@@ -12,7 +12,30 @@
 <script>
 	$(function(){
 		$("form").on("submit", call);
+		$("#btnDupCheck").on("click", f_dupCheck);
 	});
+	
+	function f_dupCheck(){
+		console.log("ddddd");
+		var empid = $("employee_id").val();
+		if (empid==""){
+			$("#employee_id").focus();
+			return;
+		}
+		$.ajax({
+			url: "/empIdCheck",
+			data:{"empid": empid},
+			type: "get",
+			success: function(responseData){
+				console.log(responseData);
+				$("#resultMessage").val("god");
+			},
+			error:function(data){
+				alert(data)
+			}
+		});
+	}
+	
 	function call() {
 		var salary = $("#salary").val();
 		alert(salary);
@@ -29,6 +52,8 @@
 				<label for="empid">empid:</label> <input type="number"
 					class="form-control" id="empid" placeholder="Enter empid"
 					name="empid" value=10>
+				<input type="button" value="중복체크" id="btnDupCheck">
+				<input type="text" id="resultMessage" value="id입력 후 중복체크">
 			</div>
 			<div class="mb-3 mt-3">
 				<label for="fname">fname:</label> <input type="text"
