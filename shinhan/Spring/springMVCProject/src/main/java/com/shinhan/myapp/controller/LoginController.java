@@ -3,6 +3,8 @@ package com.shinhan.myapp.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,10 +18,15 @@ public class LoginController {
 
 	@Autowired
 	EmpService empService;
+	
+	Logger logger = LoggerFactory.getLogger(LoginController.class);
 
 	@GetMapping("/auth/login.do")
 	public void loginDisplay() {
-
+		logger.debug("login.do夸没(debug)");
+		logger.info("login.do夸没(info)");
+		logger.warn("login.do夸没(warn)");
+		logger.error("login.do夸没(error)");
 	}
 
 	@PostMapping("/auth/login.do")
