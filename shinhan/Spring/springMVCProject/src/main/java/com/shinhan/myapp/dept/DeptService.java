@@ -3,13 +3,15 @@ package com.shinhan.myapp.dept;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service
 public class DeptService {
 	
 	@Autowired
-	DeptDAO deptDAO;
+	@Qualifier("deptmybatis")
+	DeptDAOInserface deptDAO;
 
 	//8. 삭제(Delete)
 	public int deptDelete(int deptid) {
@@ -28,9 +30,9 @@ public class DeptService {
 	}
 
 	// 5. 다양한 조건으로 조회하기
-	public List<DeptDTO> selectByCondition(int deptid, String deptname, int mid, int lid) {
-		return deptDAO.selectByCondition(deptid, deptname, mid, lid);
-	}
+//	public List<DeptDTO> selectByCondition(int deptid, String deptname, int mid, int lid) {
+//		return deptDAO.selectByCondition(deptid, deptname, mid, lid);
+//	}
 	// 2. 특정부서의 상세보기
 	public DeptDTO selectById(int deptid) {
 		return deptDAO.selectById(deptid);

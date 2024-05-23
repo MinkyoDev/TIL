@@ -6,17 +6,23 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
+
+import com.shinhan.myapp.util.DBUtil;
 
 @Repository("bDAO")
 public class BoardDAO {
 	
 	@Autowired
+	@Qualifier("dataSource")
 	DataSource ds;
 
 	Connection conn;
@@ -39,7 +45,7 @@ public class BoardDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-//			DBUtil.dbDisconnect(conn, st, rs);
+			DBUtil.dbDisconnect(conn, st, rs);
 		}
 		return boardList;
 	}
@@ -60,7 +66,7 @@ public class BoardDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-//			DBUtil.dbDisconnect(conn, pst, rs);
+			DBUtil.dbDisconnect(conn, pst, rs);
 		}		
 		return board;
 	}
@@ -78,7 +84,7 @@ public class BoardDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-//			DBUtil.dbDisconnect(conn, st, rs);
+			DBUtil.dbDisconnect(conn, st, rs);
 		}
 		return result;
 	}
@@ -97,7 +103,7 @@ public class BoardDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-//			DBUtil.dbDisconnect(conn, st, rs);
+			DBUtil.dbDisconnect(conn, st, rs);
 		}
 		return result;
 	}
@@ -112,11 +118,27 @@ public class BoardDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-//			DBUtil.dbDisconnect(conn, st, rs);
+			DBUtil.dbDisconnect(conn, st, rs);
 		}
 		return result;
 	}
 
+	public int deleteBoardArray(Integer[] checkBno) {
+		String sql = "delete from TBL_BOARD where bno in (%s)";
+		String str = Arrays.stream(checkBno).map(String::valueOf).collect(Collectors.joining());
+		try {
+			conn = ds.getConnection();
+			pst = conn.prepareStatement(sql);
+			pst.setString(1, String.format(sql, str));
+			result = pst.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.dbDisconnect(conn, st, rs);
+		}
+		return result;
+	}
+	
 	private BoardDTO makeBoard(ResultSet rs2) throws SQLException {
 		BoardDTO board = new BoardDTO();
 		board.setBno(rs.getInt("bno"));

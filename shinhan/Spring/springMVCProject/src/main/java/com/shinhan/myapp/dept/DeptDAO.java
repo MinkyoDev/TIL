@@ -11,14 +11,16 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import com.shinhan.myapp.util.DBUtil;
 
 @Repository
-public class DeptDAO {
+public class DeptDAO implements DeptDAOInserface{
 	
 	@Autowired
+	@Qualifier("dataSource")
 	DataSource ds;
 	
 	Connection conn;
@@ -169,5 +171,12 @@ public class DeptDAO {
 		dept.setManager_id(rs.getInt("manager_id"));
 
 		return dept;
+	}
+
+
+	@Override
+	public DeptDTO selectByName(String deptName) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

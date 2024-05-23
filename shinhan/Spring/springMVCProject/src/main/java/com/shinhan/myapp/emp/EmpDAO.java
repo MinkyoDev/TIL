@@ -16,6 +16,7 @@ import java.util.Map;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import com.shinhan.myapp.util.DBUtil;
@@ -25,6 +26,7 @@ public class EmpDAO {
 	
 	// 1. field 이용하기
 	@Autowired
+	@Qualifier("dataSource")
 	DataSource ds;
 	
 	// 2. 생성자 이용하기

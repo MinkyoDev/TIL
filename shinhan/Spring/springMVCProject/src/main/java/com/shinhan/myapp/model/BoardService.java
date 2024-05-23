@@ -3,6 +3,7 @@ package com.shinhan.myapp.model;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service("bService2")  // @Component + Service
@@ -11,6 +12,7 @@ public class BoardService {
 //	BoardDAO boardDAO = new BoardDAO();
 	
 	@Autowired
+	@Qualifier("bDAO")
 	BoardDAO boardDAO;
 
 	public List<BoardDTO> selectAll() {
